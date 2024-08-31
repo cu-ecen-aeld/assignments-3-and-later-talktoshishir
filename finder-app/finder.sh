@@ -1,7 +1,7 @@
 #!/bin/bash
 # Assignment 1 script
 # Author: Shishir Pandey
-#set -x
+
 set -e
 
 if [ $# -lt 2 ];

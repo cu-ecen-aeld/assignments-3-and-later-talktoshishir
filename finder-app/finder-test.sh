@@ -2,7 +2,7 @@
 # Tester script for assignment 1 and assignment 2
 # Author: Siddhant Jajoo
 
-set -e
+set -x
 set -u
 
 NUMFILES=10
@@ -34,7 +34,7 @@ rm -rf "${WRITEDIR}"
 # create $WRITEDIR if not assignment1
 assignment=`cat ../conf/assignment.txt`
 
-if [ $assignment != 'assignment1' ]
+if [ $assignment = 'assignment1' ]
 then
 	mkdir -p "$WRITEDIR"
 

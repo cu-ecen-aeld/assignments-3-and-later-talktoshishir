@@ -2,8 +2,7 @@
 # Assignment 1 script
 # Author: Shishir Pandey
 
-#set -x
-#set -e
+set -e
 
 if [ $# -lt 2 ];
 then
@@ -18,7 +17,7 @@ dirPath=$(dirname "$writefile")
 mkdir -p $dirPath
 echo "$writestr" > "$writefile"
 
-if ! [ -e "$writefile" ]  && ! [ -z "$writefile"];
+if ! [ -e "$writefile" ] ;
 then
   echo File could not be created.
   exit 1
