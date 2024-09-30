@@ -1,5 +1,5 @@
 #!/bin/bash
-# Assignment 1 script
+# Assignment 3 script
 # Author: Shishir Pandey
 
 set -e
