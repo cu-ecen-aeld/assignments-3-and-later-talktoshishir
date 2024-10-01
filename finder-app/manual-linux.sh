@@ -12,9 +12,6 @@ BUSYBOX_VERSION=1_33_1
 FINDER_APP_DIR=$(realpath $(dirname $0))
 ARCH=arm64
 CROSS_COMPILE=aarch64-none-linux-gnu-
-SYSROOT=/home/shishir/linuxSystemProgrammingIntroductionToBuildRoot/toolchain/arm-gnu-toolchain-13.3.rel1-x86_64-aarch64-none-linux-gnu/bin/../aarch64-none-linux-gnu/libc
-#SYSROOT=${CROSS_COMPILE}gcc -print-sysroot
-#ehco ${SYSROOT}
 
 if [ $# -lt 1 ]
 then
@@ -85,14 +82,13 @@ make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE}
 make CONFIG_PREFIX=${OUTDIR}/rootfs ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} install
 
 
-echo $(pwd)
 echo "Library dependencies"
 ${CROSS_COMPILE}readelf -a busybox | grep "program interpreter"
 ${CROSS_COMPILE}readelf -a busybox | grep "Shared library"
 
 
 # TODO: Add library dependencies to rootfs
-
+SYSROOT="$(${CROSS_COMPILE}gcc -print-sysroot)"
 cp -a ${SYSROOT}/lib/ld-linux-aarch64.so.1 ${ROOTFS}/lib/
 cp -a ${SYSROOT}/lib64/libm.so.6 ${ROOTFS}/lib64/
 cp -a ${SYSROOT}/lib64/libc.so.6 ${ROOTFS}/lib64/
