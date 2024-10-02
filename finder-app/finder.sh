@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Assignment 3 script
 # Author: Shishir Pandey
 
